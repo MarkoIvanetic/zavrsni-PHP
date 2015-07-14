@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+  document.write('<base href="'+ document.location.pathname +'" />')
+  </script>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>Interview Simulator</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+  <script src="js/myScript.js"></script>
+</head>
+<body>
+  <div class="mainContainer col-xs-10 col-xs-offset-1 clearfix">
+      <div class="content-switcher col-xs-8 col-xs-offset-2 row">
+        <p class="tips col-md-10 col-md-offset-1 noselect" id="tips" hidden></p>
+        <h1 class="col-xs-12 noselect" id="fieldQuestion" hidden></h1>
+        <div class="whiteRow40 cold-xs-12"></div>
+        <div class="introduction row col-xs-8 col-md-8 col-md-offest-2 col-xs-offset-2">
+          <h2>Welcome interview simulator!</h2>
+          <h3>Choose the answers you think are the best. All answers are valued differently from 0 to 100 points. Keep in mind that it's impossible to simulate interviewers mood and preferences.</h3>
+        </div>
+        <div hidden id="afterStuff" class="afterStuff row col-xs-10 row col-xs-offset-1">
+         <section class="col-xs-12">
+          <h2 hidden>Good luck on your future interviews!</h2>
+          <h3>If you want to learn more, please visit <a href="http://www.about.com/careers/">About Careers</a></h3>
+          <h3>or follow one of the links below:</h3></br>
+          <div>
+            <a href="http://jobsearch.about.com/od/interviewquestionsanswers/a/interviewquest.htm">Interview Questions and Answers</a></br>
+            <a href="http://jobsearch.about.com/od/resumes/u/resumesandletters.htm">Resumes and Cover Letters</a></br>
+            <a href="http://jobsearch.about.com/od/coverletters/">Cover Letters</a></br>
+            <a href="http://jobsearch.about.com/od/findajob/">Job Search Basics</a></br>
+            <a href="http://jobsearch.about.com/od/sampleresumes/a/sampleresumes.html">Resume and Letter Examples</a></br>
+            <a href="http://jobsearch.about.com/od/findajob/u/findajob.htm">Find a Job</a>
+            <h3><strong>Or go to <a id="mainPage" href="">Main page</a></strong></h3>
+            <hr>
+            <h3 style="">This page was created by Marko Ivanetić</h3>
+          </div>
+        </section>
+      </div>
+        <div class="noselect question col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-39" id="field0" hidden>
+          <p></p><button class="answerButton"><span>Answer</span></button>
+        </div>
+        <div class="noselect question col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-39" id="field1" hidden>
+          <p></p><button class="answerButton"><span>Answer</span></button>
+        </div>
+        <div class="noselect question col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-39" id="field2" hidden>
+          <p></p><button class="answerButton"><span>Answer</span></button>
+        </div>
+
+        <div class="finalContainer">
+          <h2>You have scored:</h2>
+        </div>
+        <button class="clearfix next blueButton row col-xs-10 .col-md-10 .col-md-offest-1 col-xs-offset-1" disabled id="next" hidden>Next</button> 
+        <button class="clearfix activeAnswers blueButton row col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6" id="start">Start with the simulator</button>
+    </div>
+  <script src="js/bootstrap.min.js"></script>
+</div>
+<?php
+  $db = mysqli_connect("localhost", "root", "", "pitanja" ) or die ("Greška prilikom spajanja na bazu" . mysqli_error($db));
+
+  if (mysqli_ping($db))
+  {
+  
+  $sql = "SELECT * FROM questions ORDER BY `id`";
+  $result = mysqli_query($db, $sql);
+  mysqli_ping();
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['id'];
+  }
+else
+  {
+  echo "Error: ". mysqli_error($db);
+  }
+
+  }
+
+?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</body>
+</html>
+
