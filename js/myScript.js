@@ -20,7 +20,7 @@ $(document).ready(function() {
             };
             //In case first stage has been passed
             if (userResults) {
-                $('#next').removeAttr('disabled');
+
             }
             var checkedAnswer = 0;
             var totalScore = 0;
@@ -92,12 +92,11 @@ $(document).ready(function() {
                     $(".answers p").css("min-height", "50px");
                     // After pressing "Next", .activeAnswer will be removed from buttons
                     $('.mainContainer button').removeClass('activeAnswers');
-                    $('#next').removeClass('activeAnswers');
                     $('.answers button').removeClass("bestAnswerButton");
 
                     //Ako ima jos pitanja
                     if ($('#question'+i)[0]){
-
+                    $('#next').attr('disabled', true);
                     $('.answers').hide();
                     $('.questions').hide();
                     $('#question'+i).show();
@@ -106,7 +105,6 @@ $(document).ready(function() {
                     } else {
                     alert("Nema dalje");
                      if (window.location.search != '?results') {
-                      $('#next').attr('disabled', false);
                       window.location.href = window.location.href + "?" + "results";
                     }
                     };
@@ -175,7 +173,7 @@ $(document).ready(function() {
             }
 
             $('#next').css('background-color', 'rgba(14,131,205,1)');
-            $('#next').removeAttr('disabled');
+            // $('#next').removeAttr('disabled');
             $('#next').addClass('blueButtonHover');
             $('#next').unbind();
 
@@ -183,7 +181,7 @@ $(document).ready(function() {
                 window.onbeforeunload = null;
                 //this will reload the page so that you cant see the answers.
                     nextQuestion();
-                    $('#next').attr('disabled', false);
+
             });
 
             $('#next').hide();
@@ -203,6 +201,7 @@ var activeAnswer = function() {
     $('#next').addClass('blueButtonHover');
     console.log('Working active')
 }; //end activeAnswer function   
+
 //This will loop through given answers and return the index of best one
 var getBestAnswer = function(arrayIndex) {
     var valueArray = [];

@@ -15,14 +15,10 @@ $GLOBALS['counter'] =1;
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
-  <script src="js/myScript.js"></script>
+  <script src="js/myScriptResults.js"></script>
 </head>
 <body>
     <div class="loadingCover"></div>
-  <div class="introduction row col-xs-8 col-md-8 col-md-offest-2 col-xs-offset-2">
-          <h2>Welcome interview simulator!</h2>
-          <h3>Choose the answers you think are the best. All answers are valued differently from 0 to 100 points. Keep in mind that it's impossible to simulate interviewers mood and preferences.</h3>
-        </div>
   <div class="mainContainer col-xs-12 col-sm-10 col-sm-offset-1 clearfix">
     <?php
     $db = mysqli_connect("localhost", "root", "", "pitanja" ) or die ("Greška prilikom spajanja na bazu" . mysqli_error($db));
@@ -51,8 +47,7 @@ $GLOBALS['counter'] =1;
       echo "Error: ". mysqli_error($db);
     }
     ?>
-    <button class="clearfix next blueButton row col-xs-9 col-xs-offset-1" disabled id="next" hidden>Next</button> 
-    <button class="clearfix activeAnswers blueButton row col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6" id="start">Start with the simulator</button>
+    <button class="clearfix next blueButton row col-xs-9 col-xs-offset-1" id="next">Next</button> 
   </div>
   
   <script src="js/bootstrap.min.js"></script>

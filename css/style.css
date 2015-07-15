@@ -86,7 +86,6 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 }
 
 .mainContainer{
-	width: 100%;
 	min-height: 83%;
 	font-size: 1.25rem;
   	min-height: 100%;
@@ -180,6 +179,9 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 .bestAnswer{
 	border: 5px solid #70BE3C;
 }
+.questions{
+	float: initial;
+}
 
 /********************FinalContainer***********************************************/
 .finalContainer{
@@ -219,7 +221,6 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 @media (min-width: 992px) {
  .mainContainer{
 	min-height: 90%;
-	margin: 0;
 }
 #field1, #field2{
 
