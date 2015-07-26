@@ -39,6 +39,12 @@ $GLOBALS['counter'] =1;
         while($rowA = mysqli_fetch_array($resultA)){
         echo  "<div class='noselect answers col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-39 answerIndicator".$question."'>
         <p>".$rowA['answer']."</p><button class='answerButton'><span>Answer</span><input type='text' value='".$rowA['value']."' hidden></button></div>";
+
+        }
+        $resultA = mysqli_query($db, $sqlA);
+        while($rowA = mysqli_fetch_array($resultA)){
+        echo  "<div hidden class='col-sm-offset-1 col-sm-10 col-md-offset-0 col-md-39 tipIndicator tipIndicator".$question."'>
+        <p>".$rowA['tips']."</p></div>";
         }
       }
     }

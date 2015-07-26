@@ -43,11 +43,9 @@ $(document).ready(function() {
                 $('#next').show();
                 $('#next').css('background-color', 'rgba(14,131,205,1)');
 
-                window.onbeforeunload = function() {
-                    return "Warning, this will reload the simulator!";
-                }
                 $('#question'+i).show();
                 $('.answerIndicator'+i).show();
+                 $('.tipIndicator'+i).show();
 
                 $('#reviewAnwers').hide();
                 $('#start').hide();
@@ -82,9 +80,11 @@ var nextQuestion = function() {
                     if ($('#question'+i)[0]){
                         $('#next').attr('disabled', true);
                         $('.answers').hide();
+                        $('.tipIndicator').hide();
                         $('.questions').hide();
                         $('#question'+i).show();
                         $('.answerIndicator'+i).show();
+                        $('.tipIndicator'+i).show();
                     //Ako nema
                 } else {
                     alert("Nema dalje");
@@ -114,7 +114,6 @@ var nextQuestion = function() {
             $('#next').unbind();
 
             $('#next').click(function() {
-                window.onbeforeunload = null;
                 //this will reload the page so that you cant see the answers.
                 nextQuestion();
 
