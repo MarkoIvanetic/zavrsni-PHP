@@ -21,7 +21,7 @@ $GLOBALS['counter'] =1;
     <div class="loadingCover"></div>
   <div class="mainContainer col-xs-12 col-sm-10 col-sm-offset-1 clearfix">
     <?php
-    $db = mysqli_connect("localhost", "root", "", "pitanja" ) or die ("Greška prilikom spajanja na bazu" . mysqli_error($db));
+    include 'connection.php';
 
     if (mysqli_ping($db))
     {

@@ -1,0 +1,26 @@
+textarea{
+	height: 100px;
+	width: 100%;
+}
+label{
+	text-align: left!important;
+}
+
+.control-group label, .control-group input {
+	width: 100%;
+}
+.mainContainer{
+	margin-top: 50px;
+	margin-bottom: 100px;
+}
+#submit{
+	margin-top: 20px;
+	background: #14C5A2;
+	height: 50px;
+	color: white;
+	font-size: 18px;
+	border:0;
+}
+.control-group {
+	padding: 0;
+}

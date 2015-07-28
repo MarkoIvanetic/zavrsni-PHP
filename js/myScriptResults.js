@@ -85,6 +85,7 @@ var nextQuestion = function() {
                         $('#question'+i).show();
                         $('.answerIndicator'+i).show();
                         $('.tipIndicator'+i).show();
+                        setHeight();
                     //Ako nema
                 } else {
                     alert("Nema dalje");
