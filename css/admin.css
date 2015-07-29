@@ -24,3 +24,18 @@ label{
 .control-group {
 	padding: 0;
 }
+legend{
+	border-color: #14C5A2!important;
+	border-width: 2px;
+}
+hr {
+  border: 0;
+  clear:both;
+  display:block;          
+  background-color:#14C5A2;
+  height: 2px;
+}
+.mainContainer h1{
+	text-align: center;
+	text-decoration: underline;
+}

@@ -16,7 +16,7 @@ include 'connection.php';
 </head>
 <body>
   <div class="mainContainer col-xs-12 col-sm-10 col-sm-offset-1 clearfix">
-    <form action="admin.php" class="form-horizontal col-xs-12" enctype="multipart/form-data" method="post">
+    <form action="addQuestion.php" class="form-horizontal col-xs-12" enctype="multipart/form-data" method="post">
       <fieldset class="col-xs-12">
 
         <!-- Form Name -->
@@ -29,12 +29,19 @@ include 'connection.php';
             <input id="questionTitle" name="questionTitle" type="text" placeholder="Type your question here" class=" input-xlarge" required="">
           </div>
         </div>
-
+ <hr class="col-xs-12 col-sm-10 col-sm-offset-1"></hr>
         <!-- Textarea -->
         <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
           <label class="control-label" for="answer1">Answer 1</label>
           <div class="controls">                     
             <textarea id="answer1" name="answer1" class=""></textarea>
+          </div>
+        </div>
+
+        <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
+          <label class="control-label" for="tip1">Tip 1</label>
+          <div class="controls">                     
+            <textarea id="tip1" name="tip1" class=""></textarea>
           </div>
         </div>
         <!-- Text input-->
@@ -44,7 +51,7 @@ include 'connection.php';
             <input id="value1" name="value1" type="number" step="25" max="100" placeholder="" class="input-xlarge" required="">
           </div>
         </div>
-
+         <hr class="col-xs-12 col-sm-10 col-sm-offset-1"></hr>
         <!-- Textarea -->
         <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
           <label class="control-label" for="answer2">Answer 2</label>
@@ -53,6 +60,12 @@ include 'connection.php';
           </div>
         </div>
 
+        <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
+          <label class="control-label" for="tip2">Tip 2</label>
+          <div class="controls">                     
+            <textarea id="tip2" name="tip2" class=""></textarea>
+          </div>
+        </div>
         <!-- Text input-->
         <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
           <label class="control-label" for="value2">Value</label>
@@ -61,21 +74,28 @@ include 'connection.php';
 
           </div>
         </div>
-
+         <hr class="col-xs-12 col-sm-10 col-sm-offset-1"></hr>
         <!-- Textarea -->
         <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
-          <label class="control-label" for="textarea">Answer 3</label>
+          <label class="control-label" for="textarea">Answer 1</label>
           <div class="controls">                     
             <textarea id="answer3" name="answer3" class=" "></textarea>
           </div>
         </div>
 
+        <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
+          <label class="control-label" for="tip3">Tip 3</label>
+          <div class="controls">                     
+            <textarea id="tip3" name="tip3" class=""></textarea>
+          </div>
+        </div>
         <!-- Text input-->
         <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
           <label class="control-label" for="value3">Value</label>
           <div class="controls">
             <input id="value3" name="value3" type="number" step="25" max="100" placeholder="" class="input-xlarge" required="">
           </div>
+
           <div class="control-group col-xs-12 col-sm-10 col-md-6">
             <input type="submit" id="submit" value="Submit">
           </div>
@@ -84,7 +104,12 @@ include 'connection.php';
     </form>
 
   </div>
+  <script src="js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</body>
+</html>
 <?php
+ob_start();
 global $passport;
 $passport = 0;
 global $queryOver;
@@ -97,6 +122,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   $answer1 = $_POST['answer1'];
   $answer2 = $_POST['answer2'];
   $answer3 = $_POST['answer3'];
+  $tip1 = $_POST['tip1'];
+  $tip2 = $_POST['tip2'];
+  $tip3 = $_POST['tip3'];
   $value1 = $_POST['value1'];
   $value2 = $_POST['value2'];
   $value3 = $_POST['value3'];
@@ -104,6 +132,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   $answer1 = mysqli_real_escape_string($db, $answer1);
   $answer2 = mysqli_real_escape_string($db, $answer2);
   $answer3 = mysqli_real_escape_string($db, $answer3);
+  $tip1 =  mysqli_real_escape_string($db, $tip1);
+  $tip2 =  mysqli_real_escape_string($db, $tip2);
+  $tip3 =  mysqli_real_escape_string($db, $tip3);
   $value1 = mysqli_real_escape_string($db, $value1);
   $value2 = mysqli_real_escape_string($db, $value2);
   $value3 = mysqli_real_escape_string($db, $value3);
@@ -111,6 +142,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $questionTitle,
     $answer1,
     $answer2,
+    $tip1,
+    $tip2,
+    $tip3,
     $answer3,
     $value1,
     $value2,
@@ -134,14 +168,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     unset($value);
   }
 
-  function ad_submit($questionTitle, $answer1, $answer2, $answer3, $value1, $value2, $value3)
+  function ad_submit($questionTitle, $answer1, $answer2, $answer3,$tip1, $tip2, $tip3, $value1, $value2, $value3)
   {
     global $db;
     $query = "INSERT INTO `pitanja`.`questions` ( `question`) 
       VALUES ('$questionTitle')";
     $result = mysqli_query($db, $query);
     $lastId = mysqli_insert_id($db);
-    printf("Last inserted record has id %d\n\n", $lastId);
     if ($result)
     {
       echo "<script>console.log('Question was inserted successfully');</script>";
@@ -154,11 +187,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     }
 
     $queryA = "INSERT INTO answers (answer, value, tips, question_id) 
-      VALUES ('$answer1', '$value1','Temporary Tip','$lastId');";
+      VALUES ('$answer1', '$value1','$tip1','$lastId');";
     $queryA.= "INSERT INTO answers (answer, value, tips, question_id) 
-      VALUES ('$answer2', '$value2','Temporary Tip','$lastId');";
+      VALUES ('$answer2', '$value2','$tip2','$lastId');";
     $queryA.= "INSERT INTO answers (answer, value, tips, question_id) 
-      VALUES ('$answer3', '$value2','Temporary Tip','$lastId');";
+      VALUES ('$answer3', '$value2','$tip3','$lastId');";
     if (mysqli_multi_query($db, $queryA))
     {
       echo "<script>console.log('Answer was inserted successfully');</script>";
@@ -173,12 +206,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     }
   }
 
-  if (is_empty($arr) && ad_submit($questionTitle, $answer1, $answer2, $answer3, $value1, $value2, $value3))
+  if (is_empty($arr) && ad_submit($questionTitle, $answer1, $answer2, $answer3,$tip1, $tip2, $tip3, $value1, $value2, $value3))
   {
     echo "<script>console.log('Querry was successfull!');</script>";
     $passport = 1;
     checkStatus($passport, $lastID);
-    echo "<script>alert(" . $passport . ");</script>";
     return true;
   }
   else
@@ -191,22 +223,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 }
 
 mysqli_close($db);
-
+ob_end_flush();
 function checkStatus($passport, $lastID)
 {
   if ($passport)
   {
-    header('Location: success.php?state=1');
+    echo '<script>window.location.replace("success.php?state=1");</script>';
   }
   else
   {
-    header("Location: success.php?state=0");
+    echo '<script>window.location.replace("success.php?state=0");</script>';
   }
+  /*
+ALTER TABLE `answers` AUTO_INCREMENT = 1;
+ALTER TABLE `questions` AUTO_INCREMENT = 1;
+*/
 }
-
 ?>
-
-<script src="js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-</body>
-</html>
