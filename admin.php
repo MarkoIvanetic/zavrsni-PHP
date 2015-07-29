@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 $GLOBALS['counter'] =1;
+include 'connection.php';
 ?>
 <html lang="en">
 <head>
@@ -15,7 +16,7 @@ $GLOBALS['counter'] =1;
 </head>
 <body>
   <div class="mainContainer col-xs-12 col-sm-10 col-sm-offset-1 clearfix">
-    <form action="admin.php" class="form-horizontal col-xs-12">
+    <form action="admin.php" class="form-horizontal col-xs-12" enctype="multipart/form-data" method="post">
       <fieldset class="col-xs-12">
 
         <!-- Form Name -->
@@ -65,7 +66,7 @@ $GLOBALS['counter'] =1;
         <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
           <label class="control-label" for="textarea">Answer 3</label>
           <div class="controls">                     
-            <textarea id="textarea" name="textarea" class=" "></textarea>
+            <textarea id="answer3" name="answer3" class=" "></textarea>
           </div>
         </div>
 
@@ -76,18 +77,21 @@ $GLOBALS['counter'] =1;
             <input id="value3" name="value3" type="number" step="25" max="100" placeholder="" class="input-xlarge" required="">
           </div>
           <div class="control-group col-xs-12 col-sm-10 col-md-6">
-          <input type="submit" id="submit" value="Submit">
-        </div>
+            <input type="submit" id="submit" value="Submit">
+          </div>
         </div>
       </fieldset>
     </form>
 
   </div>
 <?php
+global $passport;
+$passport = 0;
+global $queryOver;
+$queryOver = 0;
 
-if (isset($_POST['submit'])){
-  include 'includes/connection.php';
-
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
   $lastID = "";
   $questionTitle = $_POST['questionTitle'];
   $answer1 = $_POST['answer1'];
@@ -96,7 +100,6 @@ if (isset($_POST['submit'])){
   $value1 = $_POST['value1'];
   $value2 = $_POST['value2'];
   $value3 = $_POST['value3'];
-  $textarea = $_POST['textarea'];
   $questionTitle = mysqli_real_escape_string($db, $questionTitle);
   $answer1 = mysqli_real_escape_string($db, $answer1);
   $answer2 = mysqli_real_escape_string($db, $answer2);
@@ -104,7 +107,6 @@ if (isset($_POST['submit'])){
   $value1 = mysqli_real_escape_string($db, $value1);
   $value2 = mysqli_real_escape_string($db, $value2);
   $value3 = mysqli_real_escape_string($db, $value3);
-  $textarea = mysqli_real_escape_string($db, $textarea);
   $arr = array(
     $questionTitle,
     $answer1,
@@ -113,75 +115,98 @@ if (isset($_POST['submit'])){
     $value1,
     $value2,
     $value3,
-    $textarea
   );
-  function is_empty()
-    {
+  function is_empty($arr)
+  {
     foreach($arr as & $value)
-      {
+    {
       if (empty($value))
-        {
-        echo "Sva polja označena zvjezdicom moraju biti popunjena!";
+      {
+        echo "<h2 class='col-xs-4' style='color:green;'>Sva polja moraju biti popunjena!</h2>";
         return false;
-        }
-        else
-        {
-        return true;
-        }
       }
-      unset($value);
+      else
+      {
+        return true;
+      }
     }
 
-  function ad_submit($questionTitle, $answer1, $answer2, $answer3, $value1, $value2, $value3, $textarea)
-    {
+    unset($value);
+  }
+
+  function ad_submit($questionTitle, $answer1, $answer2, $answer3, $value1, $value2, $value3)
+  {
     global $db;
     $query = "INSERT INTO `pitanja`.`questions` ( `question`) 
-            VALUES ('$question')";
+      VALUES ('$questionTitle')";
     $result = mysqli_query($db, $query);
-    $lastId = mysql_insert_id();
+    $lastId = mysqli_insert_id($db);
+    printf("Last inserted record has id %d\n\n", $lastId);
     if ($result)
-      {
-      }
-      else
-      {
+    {
+      echo "<script>console.log('Question was inserted successfully');</script>";
+    }
+    else
+    {
+      echo "<script>console.log('Question was NOT inserted successfully');</script>";
+      $passport = 0;
       return false;
-      }
-    
-    $query1 = "INSERT INTO `pitanja`.`answers`( `answer`,'value','tips','question_id') 
-          VALUES ('$answer1', '$value1','Temporary Tip','$lastId')";
-
-    $query2 = "INSERT INTO `pitanja`.`answers`( `answer`,'value','tips','question_id') 
-          VALUES ('$answer2', '$value2','Temporary Tip','$lastId')";
-
-    $query3 = "INSERT INTO `pitanja`.`answers`( `answer`,'value','tips','question_id') 
-          VALUES ('$answer3', '$value2','Temporary Tip','$lastId')";
-
-    $result1 = mysqli_query($db, $query1);
-    $result2 = mysqli_query($db, $query2);
-    $result3 = mysqli_query($db, $query3);
-
-    if ($result1 && $result2 && $result3)
-      {
-        echo "<h2 class='col-xs-4' style='color:green;'>Uspješno ste predali oglas!</h2>";
-      }
-      else
-      {
-      return false;
-      }
     }
 
-  if(is_empty() && ad_submit($questionTitle, $answer1, $answer2, $answer3, $value1, $value2, $value3, $textarea))
+    $queryA = "INSERT INTO answers (answer, value, tips, question_id) 
+      VALUES ('$answer1', '$value1','Temporary Tip','$lastId');";
+    $queryA.= "INSERT INTO answers (answer, value, tips, question_id) 
+      VALUES ('$answer2', '$value2','Temporary Tip','$lastId');";
+    $queryA.= "INSERT INTO answers (answer, value, tips, question_id) 
+      VALUES ('$answer3', '$value2','Temporary Tip','$lastId');";
+    if (mysqli_multi_query($db, $queryA))
     {
-        return true;
-      }else{
-        echo "Nešto je pošlo po zlu!";
-      }
+      echo "<script>console.log('Answer was inserted successfully');</script>";
+      return true;
+    }
+    else
+    {
+      echo "<script>console.log('Error: " . $queryA . "-" . mysqli_error($db) . "');</script>";
+      echo "<script>console.log('Answer was NOT successfull!');</script>";
+      $passport = 0;
+      return false;
+    }
+  }
 
-    
+  if (is_empty($arr) && ad_submit($questionTitle, $answer1, $answer2, $answer3, $value1, $value2, $value3))
+  {
+    echo "<script>console.log('Querry was successfull!');</script>";
+    $passport = 1;
+    checkStatus($passport, $lastID);
+    echo "<script>alert(" . $passport . ");</script>";
+    return true;
+  }
+  else
+  {
+    echo "<script>console.log('Querry was NOT successfull!');</script>";
+    $passport = 0;
+    checkStatus($passport, $lastID);
+    return false;
+  }
 }
+
+mysqli_close($db);
+
+function checkStatus($passport, $lastID)
+{
+  if ($passport)
+  {
+    header('Location: success.php?state=1');
+  }
+  else
+  {
+    header("Location: success.php?state=0");
+  }
+}
+
 ?>
 
-  <script src="js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </body>
 </html>
