@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 30, 2015 at 10:56 PM
+-- Generation Time: Jul 30, 2015 at 11:37 PM
 -- Server version: 5.6.15-log
 -- PHP Version: 5.4.24
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `answers` (
   `question_id` int(128) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=cp1250 COLLATE=cp1250_croatian_ci AUTO_INCREMENT=55 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=cp1250 COLLATE=cp1250_croatian_ci AUTO_INCREMENT=64 ;
 
 --
 -- Dumping data for table `answers`
@@ -94,7 +94,16 @@ INSERT INTO `answers` (`id`, `answer`, `value`, `tips`, `question_id`) VALUES
 (51, 'When I read the job posting I noticed that you specifically mentioned you were looking for someone with project management experience. As you can see on my resume I have over 10 years of experience as a project manager, but what I think really sets me apart from other candidates.', 50, '<b>Focus on your Uniqueness</b><br>\r\nThe interviewer wants to know how you stand out amongst the other applicants. Therefore, focus on one or two qualities you possess that might be unique, or more difficult to find, in other interviewees. For example, if you are very experienced with a certain skill that the job requires, say so.', 17),
 (52, 'Because I know I can make a really good contribution and your benefits are more than attractive.', 25, '<b>It''s Not About You</b><br>\r\nDon''t focus on the benefit to you of the job. While the employer probably wants you to be happy in the job, they don''t care about the benefit to you at this point. They want to know the benefit to them if they hire you.', 18),
 (53, 'This company is internationally known for its products, and my experience in marketing has me intrigued by the opportunity this position presents.', 50, '<b>Know the Position and the Department (if possible)</b><br>\r\nGet to know the company you will be talking to. When you know details about them, their culture, their goals, their products, and their challenges, you are then able to talk about yourself and your fit into the company.', 18),
-(54, 'It would be a great honor to work in a reputed company like yours. I get a chance to work between the skilled people this will help me to test my knowledge and skills and to know self ability.', 50, '<b>Compare Your Goals to the Job</b><br>\r\nOnce you have done all your pre-interview homework, you will never again find yourself blundering on critical questions like this. Instead, you will be prepared to talk knowledgeably about the company and position, why they interest you, and how you will fit in with your skill set, personality, and experience.', 18);
+(54, 'It would be a great honor to work in a reputed company like yours. I get a chance to work between the skilled people this will help me to test my knowledge and skills and to know self ability.', 50, '<b>Compare Your Goals to the Job</b><br>\r\nOnce you have done all your pre-interview homework, you will never again find yourself blundering on critical questions like this. Instead, you will be prepared to talk knowledgeably about the company and position, why they interest you, and how you will fit in with your skill set, personality, and experience.', 18),
+(55, 'I plan to be a VP at a major firm with at least 7 direct reports, a company car, and a salary of 150K (plus options of course). It will be hard but I''m ready for the challenge.', 25, '<b>Don''t be too specific.</b><br>\r\nAmbition is good. Goals are good. However, if you are too specific, you run the risk of stating goals that are not realistically achievable in the job available. From the interviewer''s perspective, that means you''re not a good fit.', 19),
+(56, 'I see myself as a top performing employee in a well-established organization, like this one. I plan on enhancing my skills and continuing my involvement in (related) professional associations.', 50, '<b>Start With Your Interest in This Job</b><br>\r\nIt is often advantageous to emphasize your interest in thoroughly mastering the initial position before moving on. If it seems like you are rushing past that first job, employers might question how motivated you are to carry out those duties.', 19),
+(57, 'Once I gain additional experience from this position, I would like to move on from a technical position to development department. Some of the most innovative thinkers in the industry work here and that''s a big reason why I would love to build a career here.', 50, '<b>Moving Up the Career Ladder</b><br>\r\nThere are a few jobs where you are expected to move on after a couple of years, including some analyst positions in investment banking and consulting, as well as legal assistants and scientific research assistants (for new college grads).', 19),
+(58, 'I am currently not applying in any other companies. This position was my primary and most attractive choice.', 25, '<b>Be Careful What You Disclose</b><br>\r\nIn general, it''s a good idea to avoid stating that this job is the only one you are considering. Your marketability can be brought into question if you are not attracting attention from other employers. Your leverage in salary negotiations will also be minimized.', 20),
+(59, 'I am applying for several positions with IT consulting firms where I can analyze client needs and translate them to development teams in order to find solutions to technology problems.', 50, '<b>Exploring Options</b><br>\r\nOften the best approach is to mention that you are exploring a number of other similar options in the company''s industry. In this situation, the prospective employer will realize that they are competing with your current employer for your services.', 20),
+(60, 'While I am seriously exploring other positions where I can leverage my financial modeling skills, your position is a primary target for me', 50, '<b>Show Your Enthusiasm</b><br>\r\nBe sure to include an enthusiastic statement about how motivated you are to work with the organization in your answer. There is room here for you to elaborate on how you feel that you would be a valuable addition to their team.', 20),
+(61, 'If I get the job when can I take time off for vacation?', 25, '<b>It''s better to just walk away than to ask strange questions.</b><br>\r\nThis is the part of the interview where you can pull out a joker out of your sleeve. Hiring manager has no influence on your questions. You can surprise him and gain additional value or just ruin yourself. Below is the list of question you should never ask.<br><br>\r\n\r\n<u><b>Questions you should not ask:</b></u><br>\r\nWhat''s the policy on dating co-workers?<br>\r\nWhat do you do at this company?<br>\r\nWhat is included in the benefits package?<br>\r\nDo you do background checks?<br>\r\nHow did I do?<br>\r\nWhat is your policy on drug use?<br>\r\nHow did I do?<br>\r\nNot asking questions at all.<br>', 21),
+(62, 'Well, I gave great answers already. You gave me all the information I need. If I have any additional question can I contact you via email?', 50, '<b>Everything is clear thank you.</b><br>\r\nAlthough this is not a way to do it - it is still better than asking inappropriate question. Having no questions prepared sends the message that you have no independent thought process, or are ill-prepared, or are not bright, or some combination. Also, asking questions is a good way to dig into the company culture and the specific day-to-day responsibilities of the position, so that your first week in the position won''t be accompanied by any major surprises.<br></br>\r\n\r\n<u><b>Questions you can ask:</b></u><br>\r\nHow would you describe the responsibilities of the position?<br>\r\nHow would you describe a typical week/day in this position?<br>\r\nHow many people work in this office/department?<br>\r\nHow much travel is expected?<br>\r\nWhat are the prospects for growth and advancement?<br>\r\nWhat do you like about working here?<br>\r\nWhen can I expect to hear from you?<br>\r\nDo you have any reservations about my qualifications?<br>', 21),
+(63, 'Who does this position report to? If I am offered the position, can I meet him/her?', 50, '<b>Prepare few questions to ask.</b><br>\r\nPrepare few intelligent, thoughtful and cordial questions. This particular answer is one of the high valued ones. Below is the list of more.<br></br>\r\n\r\n<u><b>High valued questions:</b></u><br>\r\nThese are some "high risk, high reward" questions. Don''t ask them if you aren''t confident that you can deliver the debate which comes after them.<br></br>\r\n<b>Tell me about the other members of your team.</b><br>\r\n<i>Then bring up how your portfolio of experiences and expertise helps round out the team, is complementary, or adds strength.</i><br>\r\n<br>\r\n<b>What do you envision my goals would look like for the first year?</b><br>\r\n<i>Come prepared! Share your own 30/60/90-day plan. Get at: how well do you know and appreciate this position?</i>\r\n<br><br>\r\n<b>If I were to have extraordinary success in the first six months of my tenure, what would be some examples of what I would have accomplished?</b><br>\r\n<i>Share previous examples from your work history where you have had easily-transferable successes.</i><br>\r\n<br>\r\n<b>What problems should I expect to encounter on the job in the short-term?</b><br>\r\n<i>Get at: where are the potential land mines: people, projects, politics, departments?</i><br>\r\n<br>\r\n<b>How does upper management view our department / division?</b><br>\r\n<i>Get at: is your work and/or department respected? Seen as valuable players? Catch the blame a lot?</i><br>\r\n<br>\r\n<b>What is the most significant project on your desk today?</b><br>\r\n<i>Ask this if you can think quickly on your feet. Provide insightful feedback on what''s shared. Clarify, brainstorm, show your worth and efficiency.</i>', 21);
 
 -- --------------------------------------------------------
 
@@ -107,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `question` varchar(256) COLLATE cp1250_croatian_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=cp1250 COLLATE=cp1250_croatian_ci COMMENT='Containt questions duh!' AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=cp1250 COLLATE=cp1250_croatian_ci COMMENT='Containt questions duh!' AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `questions`
@@ -131,7 +140,10 @@ INSERT INTO `questions` (`id`, `question`) VALUES
 (15, 'Describe the gap in your employment history.'),
 (16, 'What are your salary expectations?'),
 (17, 'Why should we hire you?'),
-(18, 'Why do you want to work here? ');
+(18, 'Why do you want to work here? '),
+(19, 'Where do you see yourself 5 years from now?'),
+(20, 'Where else are you interviewing?'),
+(21, 'Do you have any questions for us.');
 
 -- --------------------------------------------------------
 
