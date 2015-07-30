@@ -41,14 +41,14 @@ include 'connection.php';
         <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
           <label class="control-label" for="tip1">Tip 1</label>
           <div class="controls">                     
-            <textarea id="tip1" name="tip1" class=""></textarea>
+            <textarea id="tip1" name="tip1" class=""><b></b><br></textarea>
           </div>
         </div>
         <!-- Text input-->
         <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
           <label class="control-label" for="value1">Value</label>
           <div class="controls">
-            <input id="value1" name="value1" type="number" step="25" max="100" placeholder="" class="input-xlarge" required="">
+            <input id="value1" name="value1" value="25" type="number" step="25" max="100" placeholder="" class="input-xlarge" required="">
           </div>
         </div>
          <hr class="col-xs-12 col-sm-10 col-sm-offset-1"></hr>
@@ -63,21 +63,21 @@ include 'connection.php';
         <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
           <label class="control-label" for="tip2">Tip 2</label>
           <div class="controls">                     
-            <textarea id="tip2" name="tip2" class=""></textarea>
+            <textarea id="tip2" name="tip2" class=""><b></b><br></textarea>
           </div>
         </div>
         <!-- Text input-->
         <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
           <label class="control-label" for="value2">Value</label>
           <div class="controls">
-            <input id="value2" name="value2" type="number" step="25" max="100" placeholder="" class="input-xlarge" required="">
+            <input id="value2" name="value2" value="50" type="number" step="25" max="100" placeholder="" class="input-xlarge" required="">
 
           </div>
         </div>
          <hr class="col-xs-12 col-sm-10 col-sm-offset-1"></hr>
         <!-- Textarea -->
         <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
-          <label class="control-label" for="textarea">Answer 1</label>
+          <label class="control-label" for="textarea">Answer 3</label>
           <div class="controls">                     
             <textarea id="answer3" name="answer3" class=" "></textarea>
           </div>
@@ -86,14 +86,14 @@ include 'connection.php';
         <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
           <label class="control-label" for="tip3">Tip 3</label>
           <div class="controls">                     
-            <textarea id="tip3" name="tip3" class=""></textarea>
+            <textarea id="tip3" name="tip3" class=""><b></b><br></textarea>
           </div>
         </div>
         <!-- Text input-->
         <div class="control-group col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8">
           <label class="control-label" for="value3">Value</label>
           <div class="controls">
-            <input id="value3" name="value3" type="number" step="25" max="100" placeholder="" class="input-xlarge" required="">
+            <input id="value3" name="value3" value="75" type="number" step="25" max="100" placeholder="" class="input-xlarge" required="">
           </div>
 
           <div class="control-group col-xs-12 col-sm-10 col-md-6">
@@ -237,6 +237,7 @@ function checkStatus($passport, $lastID)
   /*
 ALTER TABLE `answers` AUTO_INCREMENT = 1;
 ALTER TABLE `questions` AUTO_INCREMENT = 1;
+ALTER TABLE `tips` AUTO_INCREMENT = 1;
 */
 }
 ?>

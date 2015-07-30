@@ -10,14 +10,14 @@ $(document).ready(function() {
             }
             //This one is the beauty, makes them all same height
             var getBestAnswer = function() {
-               $(".answers:visible").each(function(){
+             $(".answers:visible").each(function(){
                 if ($(this).find("input").val()==75){
                     $(this).find("button").addClass("bestAnswerButton");
                     $(this).find("button").text("Best Answer");
                 }
             });
-           }
-           var setHeight = function() {
+         }
+         var setHeight = function() {
             var maxHeight = 0;
             $(".answers p").each(function() {
                 if ($(this).innerHeight() > maxHeight) {
@@ -45,7 +45,7 @@ $(document).ready(function() {
 
                 $('#question'+i).show();
                 $('.answerIndicator'+i).show();
-                 $('.tipIndicator'+i).show();
+                $('.tipIndicator'+i).show();
 
                 $('#reviewAnwers').hide();
                 $('#start').hide();

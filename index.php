@@ -35,7 +35,7 @@ $GLOBALS['counter'] =1;
       {
         $question = $row['id'];
         echo '<h1 class="col-xs-12 noselect questions" id=question'.$row['id'].' hidden>'.$row['question']
-        .'</h1><div class="whiteRow20 col-xs-12"></div>';
+        .'</h1>';
 
         $sqlA = "SELECT * FROM answers WHERE `question_id`=".$question." ORDER BY `id`";
 

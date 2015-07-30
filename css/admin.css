@@ -1,3 +1,4 @@
+/*ADD QUESTION*/
 textarea{
 	height: 100px;
 	width: 100%;
@@ -9,7 +10,7 @@ label{
 .control-group label, .control-group input {
 	width: 100%;
 }
-.mainContainer{
+.mainContainer, .adminContainer{
 	margin-top: 50px;
 	margin-bottom: 100px;
 }
@@ -35,7 +36,14 @@ hr {
   background-color:#14C5A2;
   height: 2px;
 }
-.mainContainer h1{
+
+/*ADMIN PANEL*/
+.adminContainer h1{
 	text-align: center;
-	text-decoration: underline;
+}
+.borded{
+	border: 2px solid black;
+}
+.centered{
+	text-align: center;
 }

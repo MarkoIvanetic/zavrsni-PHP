@@ -34,16 +34,6 @@ $(document).ready(function() {
         $('#next').hide();
         $('#fieldQuestion').hide();
     }
-    if (userResults) {
-        $('#tips').show();
-        $('.answers').show();
-        $('#reviewAnwers').hide();
-        $('.introduction').hide();
-        $('#start').hide();
-        $('#next').show();
-        $('#fieldQuestion').show();
-        $('#next').css('background-color', 'rgba(14,131,205,1)');
-    }
     $('#start').click(function() {
         window.onbeforeunload = function() {
             return "Warning, this will reload the simulator!";
@@ -74,18 +64,11 @@ $(document).ready(function() {
     // $('#field1 p').text(data.answerss[0].answers[1].answer);
     // $('#field2 p').text(data.answerss[0].answers[2].answer);
     // $('#tips').text("Tip: " + data.answerss[0].tip);
-    if (userResults) {
-        $('.answers').removeClass("bestAnswer");
-        $('.bestAnswer').removeClass("bestAnswer");
-        $('#field2').addClass("bestAnswer");
-        $('.bestAnswer button').addClass("bestAnswerButton");
-        $('.answerButton span').text("Inferior answer");
-        $('#field2 span').text("Best answer");
-    }
     // NEXT - the most important function
     var nextQuestion = function() {
+        setHeight();
             totalscore += parseInt($('.activeAnswers input').val());
-            alert(totalscore);
+            console.log(totalscore);
             i += 1;
             window.scrollTo(0, 0);
             //Question height reset, it will be changed before end of IF below
@@ -93,7 +76,7 @@ $(document).ready(function() {
             // After pressing "Next", .activeAnswer will be removed from buttons
             $('.mainContainer button').removeClass('activeAnswers');
             $('.answers button').removeClass("bestAnswerButton");
-
+            setHeight();
             //Ako ima jos pitanja
             if ($('#question' + i)[0]) {
                 $('#next').attr('disabled', true);
@@ -101,13 +84,13 @@ $(document).ready(function() {
                 $('.questions').hide();
                 $('#question' + i).show();
                 $('.answerIndicator' + i).show();
+                setHeight();
                 //Ako nema
             } else {
                 alert("Nema dalje");
-                if (window.location.search != '?results') {
-                    window.location.href = window.location.href + "?" + "results";
-                }
+                window.location.replace("results.php");;
             };
+            setHeight();
         }
         //End function "next question"
 

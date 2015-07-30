@@ -15,8 +15,17 @@ include 'connection.php';
   <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <div class="mainContainer col-xs-12 col-sm-10 col-sm-offset-1 clearfix">
-    <h1 class="col-xs-12">Admin Panel</h1>
+  <div class="adminContainer col-xs-12 col-sm-10 col-sm-offset-1 clearfix">
+    <h1 class="col-xs-12 borded">Admin Panel</h1>
+    <div class="row">
+        <div class="col-sm-offset-1 col-sm-5 col-md-offset-2 col-md-4 centered">
+         <a href="addQuestion.php"><h2>Add Question/Answer</h2></a>
+        </div>
+        <div class="col-sm-5 centered">
+        <a href="addTip.php"><h2>Add Question/Tip</h2></a>
+        </div>
+        <div class="col-sm-offset-1 col-sm-10"></div>
+    </div>
 
   </div>
   <script src="js/bootstrap.min.js"></script>
