@@ -2,8 +2,8 @@ $(document).ready(function() {
     // i counts the questions, it's not 0 because first question is preloaded
     var i = 1;
     var userResults = 0;
-    var totalscore = 0;
     var maxHeight = 0;
+    var questionStep = 1;
     var userStartedResults = 0;
     if (window.location.search == '?results') {
         userResults = 1;
@@ -68,11 +68,11 @@ $(document).ready(function() {
     // NEXT - the most important function
     var nextQuestion = function() {
         $('#next').removeAttr('disabled');
-            totalscore += parseInt($('.activeAnswers input').val());
-            i += 1;
+            i += questionStep;
             window.scrollTo(0, 0);
             //Question height reset, it will be changed before end of IF below
             $(".answers p").css("min-height", "50px");
+
             // After pressing "Next", .activeAnswer will be removed from buttons
             $('.mainContainer button').removeClass('activeAnswers');
             $('.answers button').removeClass("bestAnswerButton");
@@ -89,10 +89,7 @@ $(document).ready(function() {
                 setHeight();
                 //Ako nema
             } else {
-                alert("Nema dalje");
-                if (window.location.search != '?results') {
-                    window.location.href = window.location.href + "?" + "results";
-                }
+            window.location.replace("tipQuestions.php");
             };
             getBestAnswer();
         }

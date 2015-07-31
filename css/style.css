@@ -212,7 +212,7 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 /********************FinalContainer***********************************************/
 .finalContainer {
   display: none;
-  min-height: 500px;
+  min-height: 400px;
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
 }

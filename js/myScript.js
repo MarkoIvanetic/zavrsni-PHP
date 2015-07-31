@@ -2,12 +2,14 @@ $(document).ready(function() {
     // i counts the questions, it's not 0 because first question is preloaded
     var i = 1;
     var userResults = 0;
-    var totalscore = 0;
+    var scoreArray = [];
     var maxHeight = 0;
+    var scoreMessage = "";
+    //questionStep is made for testing, how much will question counter increment. 
+    //(if you put 2 you will see every second question)
+    var questionStep = 1;
     var userStartedResults = 0;
-    if (window.location.search == '?results') {
-        userResults = 1;
-    }
+
     //This one is the beauty, makes them all same height
     var setHeight = function() {
         var maxHeight = 0;
@@ -19,21 +21,17 @@ $(document).ready(function() {
         $(".answers p").css("min-height", maxHeight);
     };
     //In case first stage has been passed
-    if (userResults) {
-
-    }
-    var checkedAnswer = 0;
-    var totalScore = 0;
+    var finalScore;
     $('#mainPage').click(function() {
             window.location.href.substr(0, window.location.href.indexOf('#'));
         })
         // In case the simulator has not been completed
-    if (!userResults) {
+
         $('.introduction').show();
         $('.answers').hide();
         $('#next').hide();
         $('#fieldQuestion').hide();
-    }
+
     $('#start').click(function() {
         window.onbeforeunload = function() {
             return "Warning, this will reload the simulator!";
@@ -48,28 +46,12 @@ $(document).ready(function() {
         $('#start').hide();
         $('#next').show();
         $('#fieldQuestion').show();
-        if (userResults) {
-            $('#tips').show();
-            $('#next').removeAttr('disabled');
-            $('#next').css('background-color', 'rgba(14,131,205,1)');
-            $('#next').text("See next answer");
-            $('.answerButton').attr("disabled", true);
-        }
         setHeight();
     });
-
-    //Fetches the first set of data (1th question)
-    // $('#fieldQuestion').text(data.answerss[0].answers);
-    // $('#field0 p').text(data.answerss[0].answers[0].answer);
-    // $('#field1 p').text(data.answerss[0].answers[1].answer);
-    // $('#field2 p').text(data.answerss[0].answers[2].answer);
-    // $('#tips').text("Tip: " + data.answerss[0].tip);
-    // NEXT - the most important function
     var nextQuestion = function() {
-        setHeight();
-            totalscore += parseInt($('.activeAnswers input').val());
-            console.log(totalscore);
-            i += 1;
+            scoreArray.push(parseInt($('.activeAnswers input').val()));
+            console.log('Total score: ' + sumArray(scoreArray));
+            i += questionStep;
             window.scrollTo(0, 0);
             //Question height reset, it will be changed before end of IF below
             $(".answers p").css("min-height", "50px");
@@ -85,11 +67,57 @@ $(document).ready(function() {
                 $('#question' + i).show();
                 $('.answerIndicator' + i).show();
                 setHeight();
-                //Ako nema
+
+
+                //AFTER ANSWERING ALL QUESTIONS
             } else {
-                alert("Nema dalje");
-                window.location.replace("results.php");;
+                console.log('End of questions');
+
+                var finalScore = Math.round(sumArray(scoreArray) / (scoreArray.length * 75) * 100);
+                console.log(finalScore);
+
+                if (finalScore < 26) {
+                    scoreMessage = "You should consider yourself lucky if the security doesn't escort you out.";
+                    console.log("Score Message no.25");
+                } else if (finalScore > 26 && finalScore < 70) {
+                    scoreMessage = "We are sorry, but you probably won't get the job. You should upgrade your interview skills.";
+                    console.log("Score Message no.70");
+                } else if (finalScore > 70 && finalScore < 80) {
+                    scoreMessage = "Your result is average. You are on the line of getting the job.";
+                    console.log("Score Message no.80");
+                } else if (finalScore > 80 && finalScore < 90) {
+                    scoreMessage = "You prepared yourself well. Interviewer is considering you for the job very seriously.";
+                    console.log("Score Message no.90");
+                } else if (finalScore >= 90) {
+                    scoreMessage = "Well done! You impressed the interviewer and the job is probably yours";
+                    console.log("Score Message no.100");
+                }
+                if(finalScore){
+                $('.mainContainer').hide();
+                $('.finalContainer').css("display", "inherit");
+                $('.finalContainer').append('<h2 class="scoreClass">' + finalScore + '%</h2>');
+                var counter = 0;
+                var temp = 1;
+
+                setInterval(function() {
+                    if (counter <= finalScore) {
+                        //this next if slows the counter down when it hits finalScore -10
+                        if (counter > (finalScore - 10)) {
+                            temp = 0.50;
+                        }
+                        $('.scoreClass').text(Math.round(counter) + "%");
+                        $('.scoreClass').css("font-size", (75 + (counter * 0.75)))
+                        counter += temp;
+                    }
+                    if (counter == finalScore) {
+                        $('.finalContainer').append('<h3 class="col-xs-12" style="text-align:center;">' + scoreMessage + '</h3>');
+                        $('.finalContainer p').text(scoreMessage).animate("opacity", "1");
+                        $('#onward').show().css("background-color", "rgba(14,131,205,1)");
+                        $('.finalText').show();
+                    }
+                }, 50);}
             };
+
             setHeight();
         }
         //End function "next question"
@@ -104,67 +132,18 @@ $(document).ready(function() {
 
     $(".answers p").css("min-height", maxHeight);
     $(".answers p").css("min-height", maxHeight);
-
-    //AFTER ANSWERING ALL QUESTIONS
-    console.log('End of questions');
-    //totalScore = Math.round(totalScore / (data.answerss.length * 100) * 100);
-    console.log(totalScore);
-    $('#tips').hide();
-    $('.answers').hide();
-    $('#fieldQuestion').hide();
-    $('#next').hide();
-    $('.finalContainer').css("display", "inherit");
-    $('.finalContainer').append('<h2 class="scoreClass">' + totalScore + '%</h2>');
-    var counter = 0;
-    var temp = 1;
-    //$('.finalContainer').click(function(){
-    //next lines update every 50ms
-    $('.finalContainer').append('<p></p>');
-    setInterval(function() {
-        if (counter <= totalScore) {
-            //this next if slows the counter down when it hits totalScore -10
-            if (counter > (totalScore - 10)) {
-                temp = 0.50;
-            }
-            $('.scoreClass').text(Math.round(counter) + "%");
-            $('.scoreClass').css("font-size", (75 + (counter * 0.75)))
-            counter += temp;
-        }
-        if (counter == totalScore) {
-            //$('.finalContainer').append('<p>' + scoreMessage + '</p>');
-            $('.finalContainer p').text(scoreMessage).animate("opacity", "1");
-            $('#next').text("See the best rated answers");
-            $('#next').removeClass("blueButtonHover");
-            $('#next').show();
-        }
-    }, 50);
-    // });
-    if (totalScore < 26) {
-        scoreMessage = "You should consider yourself lucky if the security doesn't escort you out.";
-        console.log("20");
-    } else if (totalScore > 26 && totalScore < 70) {
-        scoreMessage = "We are sorry, but you probably won't get the job. You should upgrade your interview skills.";
-        console.log("70");
-    } else if (totalScore > 70 && totalScore < 80) {
-        scoreMessage = "Your result is average. You are on the line of getting the job.";
-        console.log("80");
-    } else if (totalScore > 80 && totalScore < 90) {
-        scoreMessage = "You prepared yourself well. Interviewer is considering you for the job very seriously.";
-        console.log("90");
-    } else if (totalScore >= 90) {
-        scoreMessage = "Well done! You impressed the interviewer and the job is probably yours";
-    }
-
     $('#next').css('background-color', 'rgba(14,131,205,1)');
     // $('#next').removeAttr('disabled');
     $('#next').addClass('blueButtonHover');
     $('#next').unbind();
-
     $('#next').click(function() {
         window.onbeforeunload = null;
         //this will reload the page so that you cant see the answers.
         nextQuestion();
 
+    });
+    $('#onward').click(function(){
+        window.location.replace("results.php");
     });
 
     $('#next').hide();
@@ -185,6 +164,13 @@ $(document).ready(function() {
         console.log('Working active')
     }; //end activeAnswer function   
 
+    var sumArray = function(array){
+        var total = 0;
+        for (var i = 0; i < array.length; i++) {
+            total += array[i] << 0;
+            }
+        return total;
+    }
     //This will loop through given answers and return the index of best one
     var getBestAnswer = function(arrayIndex) {
         var valueArray = [];
