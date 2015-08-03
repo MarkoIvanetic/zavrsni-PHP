@@ -3,7 +3,7 @@ $(document).ready(function() {
     var i = 1;
     var userResults = 0;
     var maxHeight = 0;
-    var questionStep = 1;
+    var questionStep = 10;
     var userStartedResults = 0;
     if (window.location.search == '?results') {
         userResults = 1;
@@ -36,24 +36,18 @@ $(document).ready(function() {
         // In case the simulator has not been completed
 
     $('.answers').hide();
-    $('#next').hide();
     $('#tips').show();
     $('#reviewAnwers').hide();
-    $('#start').hide();
-    $('#next').show();
     $('#next').css('background-color', 'rgba(14,131,205,1)');
-
+    $('#redirect').css('background-color', 'rgba(14,131,205,1)');
     $('#question' + i).show();
     $('.answerIndicator' + i).show();
     $('.tipIndicator' + i).show();
-
     $('#reviewAnwers').hide();
-    $('#start').hide();
     $('#next').show();
     $('#tips').show();
     $('#next').removeAttr('disabled');
-    $('#next').css('background-color', 'rgba(14,131,205,1)');
-    $('#next').text("See next answer");
+    $('#next').text("Next answer");
     $('.answerButton').attr("disabled", true);
 
     setHeight();
@@ -67,7 +61,7 @@ $(document).ready(function() {
 
     // NEXT - the most important function
     var nextQuestion = function() {
-        $('#next').removeAttr('disabled');
+            $('#next').removeAttr('disabled');
             i += questionStep;
             window.scrollTo(0, 0);
             //Question height reset, it will be changed before end of IF below
@@ -89,7 +83,11 @@ $(document).ready(function() {
                 setHeight();
                 //Ako nema
             } else {
-            window.location.replace("tipQuestions.php");
+                $('.mainContainer').hide();
+                $('.introTips').show();
+                $("#redirect").click(function() {
+                    window.location.replace("tipQuestions.php");
+                });
             };
             getBestAnswer();
         }
@@ -116,9 +114,6 @@ $(document).ready(function() {
         nextQuestion();
 
     });
-    $('#afterStuff').show();
-    $('#afterStuff *').show(400);
-    $('.aboutMe').slideDown();
 
 
     //This will loop through given answers and return the index of best one
