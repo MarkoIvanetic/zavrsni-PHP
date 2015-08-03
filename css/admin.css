@@ -22,6 +22,11 @@ label{
 	font-size: 18px;
 	border:0;
 }
+.delete{
+	border:none;
+	color: white;
+	background-color: rgba(14,131,205,1);
+}
 .control-group {
 	padding: 0;
 }
@@ -38,6 +43,9 @@ hr {
 }
 
 /*ADMIN PANEL*/
+.adminContainer a:hover{
+cursor: pointer;
+}
 .adminContainer h1{
 	text-align: center;
 }

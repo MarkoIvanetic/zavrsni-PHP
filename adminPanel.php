@@ -2,7 +2,31 @@
 <?php
 $GLOBALS['counter'] =1;
 include 'connection.php';
-?>
+  session_start();
+  if($_SESSION['username'] == NULL)
+    header("Location:login.php");
+
+if(isset($_POST['delete']))
+{
+if(! $db )
+{
+  die('Could not connect: ' . mysql_error());
+}
+$arr = explode(".", $_POST['questionSelect'], 2);
+$first = $arr[0];
+
+$sql = "DELETE FROM questions WHERE id = $first";
+$result = mysqli_query($db, $sql);
+
+if(!$result)
+{
+  die('Could not delete data: ' . mysql_error());
+}
+echo "Deleted data successfully\n";
+}
+else
+{}
+  ?>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -26,7 +50,33 @@ include 'connection.php';
         </div>
         <div class="col-sm-offset-1 col-sm-10"></div>
     </div>
+    <form method="post" action="adminPanel.php" class="col-sm-offset-1 col-sm-5 col-md-offset-2 col-md-4 centered">
+      <h2>Delete questions</h2>
+<select name="questionSelect">
+<?php
+include 'connection.php';
 
+if (mysqli_ping($db))
+  {
+  $sqlQ = "SELECT * FROM questions ORDER BY `id`";
+  $result = mysqli_query($db, $sqlQ);
+  while ($row = mysqli_fetch_array($result))
+    {
+    $question = $row['id'];
+    echo '<option id=question' . $row['id'] . '>' . $row['id'] . '. '. $row['question'] . '</option>';
+    }
+  }
+  else
+  {
+  echo "Error: " . mysqli_error($db);
+  }
+  
+?>
+</select>
+<div class="col-xs-12 centered">
+<input name="delete" type="submit" class="col-xs-12 centered delete" id="delete" value="Delete">
+</div>
+    </form>
   </div>
   <script src="js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

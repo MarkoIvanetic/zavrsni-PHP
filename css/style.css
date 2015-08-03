@@ -209,6 +209,14 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
   float: initial;
 }
 
+.secretLogin{
+  color: black;
+}
+.secretLogin:hover{
+  cursor: default;
+  text-decoration: none;
+  color: black;
+}
 /********************FinalContainer***********************************************/
 .finalContainer {
   display: none;
@@ -286,28 +294,3 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
     margin-left: 0px;
   }
 }
-
-
-
-
-/*
-http://jobsearch.about.com/od/interviewquestionsanswers/a/interviewquest.htm
-
-Tell me about yourself. ++++
-What is your greatest weakness?
-What is your greatest strength?
-How are you different from the competition?
-How do you handle stress and pressure?
-What motivates you?
-Do you prefer to work independently or on a team? 
-What type of work environment do you prefer?
-
-
-What can you do better for us than the other candidates for the job?
-What strength will help you the most to succeed?
-Describe your ideal boss
-Why did you quit your job?
-Why should we hire you?
-Where do you see yourself 5 years from now?
-What will you do if you don't get this position?
-*/

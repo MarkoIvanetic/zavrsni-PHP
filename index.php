@@ -21,7 +21,8 @@
   <div class="loadingCover"></div>
   <div class="introduction row col-xs-8 col-md-8 col-md-offest-2 col-xs-offset-2">
     <h2>Welcome interview simulator!</h2>
-    <h3>Choose the answers you think are the best. All answers are valued differently from 0 to 100 points. Keep in mind that it's impossible to simulate interviewers mood and preferences.</h3>
+    <h3>Choose the answers you think are the best. All answers are valued differently from 0 to 100 points. Keep in mind that it's impossible to simulate interviewers mood and <a class="secretLogin" href="login.php">preferences</a>.</h3>
+    <h3>After the quiz you can see the best answers and tips on how to improve your answers.</h3>
   </div>
   <div class="mainContainer col-xs-12 col-sm-10 col-sm-offset-1 clearfix">
     <?php

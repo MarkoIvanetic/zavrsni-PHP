@@ -2,6 +2,9 @@
 <?php
 $GLOBALS['counter'] =1;
 include 'connection.php';
+  session_start();
+  if($_SESSION['username'] == NULL)
+    header("Location:login.php");
 ?>
 <html lang="en">
 <head>
