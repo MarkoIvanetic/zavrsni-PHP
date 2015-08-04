@@ -1,20 +1,7 @@
 $(document).ready(function() {
     // i counts the questions, it's not 0 because first question is preloaded
     var i = 1;
-    var maxHeight = 0;
     var questionStep = 1;
-
-    //This one is the beauty, makes them all same height
-
-    var setHeight = function() {
-        var maxHeight = 0;
-        $(".answers p").each(function() {
-            if ($(this).innerHeight() > maxHeight) {
-                maxHeight = $(this).innerHeight();
-            }
-        });
-        $(".answers p").css("min-height", maxHeight);
-    };
 
     $('#next').show();
     $('#next').css('background-color', 'rgba(14,131,205,1)');
@@ -22,7 +9,6 @@ $(document).ready(function() {
     $('#question' + i).show();
     $('#tip' + i).show();
 
-    setHeight();
 
     // NEXT - the most important function
     var nextQuestion = function() {
@@ -35,7 +21,7 @@ $(document).ready(function() {
 
                 $('#question' + i).show();
                 $('#tip' + i).show();
-                setHeight();
+                $('#tip' + i + ' p').css("min-height","50px");
                 //Ako nema
             } else {
     $('.mainContainer').hide();
@@ -46,18 +32,6 @@ $(document).ready(function() {
         }
         //End function "next question"
 
-    //This one is the beauty, makes them all same height
-    var maxHeight = 0;
-    $(".answers p").each(function() {
-        if ($(this).innerHeight() > maxHeight) {
-            maxHeight = $(this).innerHeight();
-        }
-    });
-
-    $(".answers p").css("min-height", maxHeight);
-    $(".answers p").css("min-height", maxHeight);
-
-    
     $('#next').click(function() {
         //this will reload the page so that you cant see the answers.
         nextQuestion();

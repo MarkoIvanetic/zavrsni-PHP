@@ -36,7 +36,7 @@
       {
         $question = $row['id'];
         echo '<h1 class="col-xs-12 noselect questions" id=question' . $row['id'] . ' hidden>' . $row['question'] . '</h1>';
-        $sqlA = "SELECT * FROM answers WHERE `question_id`=" . $question . " ORDER BY `id`";
+        $sqlA = "SELECT * FROM answers WHERE `question_id`=" . $question . " ORDER BY RAND()";
         $resultA = mysqli_query($db, $sqlA);
         while ($rowA = mysqli_fetch_array($resultA))
         {

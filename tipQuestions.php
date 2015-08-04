@@ -34,7 +34,7 @@ $GLOBALS['counter'] =1;
         .'</h1>';
 
         echo '<div class="row">
-        <div style="display:none" class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 answers" id=tip'.$row['id'].'><p>'.$row['tip'].'</p></div>
+        <div style="display:none;" class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 answers" id=tip'.$row['id'].'><p>'.$row['tip'].'</p></div>
         </div>';
       }
     }
