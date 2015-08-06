@@ -19,7 +19,7 @@ $GLOBALS['counter'] =1;
 </head>
 <body>
   <div class="loadingCover"></div>
-  <div class="mainContainer col-xs-12 col-sm-10 col-sm-offset-1 clearfix">
+  <div class="mainContainer designerBackground col-xs-12 col-sm-10 col-sm-offset-1 clearfix">
     <?php
     include 'connection.php';
 
@@ -30,7 +30,7 @@ $GLOBALS['counter'] =1;
       while($row = mysqli_fetch_array($result))
       {
         $question = $row['id'];
-        echo '<h1 class="col-xs-12 noselect questions" id=question'.$row['id'].' hidden>'.$row['question']
+        echo '<h1 class="col-xs-12 noselect designerGreen questions" id=question'.$row['id'].' hidden>'.$row['question']
         .'</h1>';
 
         echo '<div class="row">

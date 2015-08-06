@@ -4,7 +4,8 @@ $(document).ready(function() {
     var questionStep = 1;
 
     $('#next').show();
-    $('#next').css('background-color', 'rgba(14,131,205,1)');
+    $('#next').css('background-color', '#FF595B');
+    $('#next').css('opacity', '1');
 
     $('#question' + i).show();
     $('#tip' + i).show();
