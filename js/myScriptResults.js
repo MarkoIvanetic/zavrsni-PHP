@@ -3,7 +3,7 @@ $(document).ready(function() {
     var i = 1;
     var userResults = 0;
     var maxHeight = 0;
-    var questionStep = 10;
+    var questionStep = 1;
     var userStartedResults = 0;
     if (window.location.search == '?results') {
         userResults = 1;
@@ -38,8 +38,8 @@ $(document).ready(function() {
     $('.answers').hide();
     $('#tips').show();
     $('#reviewAnwers').hide();
-    $('#next').css('background-color', 'rgba(14,131,205,1)');
-    $('#redirect').css('background-color', 'rgba(14,131,205,1)');
+    $('#next').css('background-color', '#FF595B');
+    $('#redirect').css('background-color', '#FF595B');
     $('#question' + i).show();
     $('.answerIndicator' + i).show();
     $('.tipIndicator' + i).show();
@@ -105,7 +105,7 @@ $(document).ready(function() {
     $(".answers p").css("min-height", maxHeight);
 
     //AFTER ANSWERING ALL QUESTIONS
-    $('#next').css('background-color', 'rgba(14,131,205,1)');
+    $('#next').css('background-color', '#FF595B');
     // $('#next').removeAttr('disabled');
     $('#next').addClass('blueButtonHover');
 

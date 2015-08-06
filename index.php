@@ -19,12 +19,12 @@
 
 <body>
   <div class="loadingCover"></div>
-  <div class="introduction row col-xs-8 col-md-8 col-md-offest-2 col-xs-offset-2">
-    <h2>Welcome interview simulator!</h2>
+  <div class="introduction designerBackground row col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <h2 CLASS="designerGreen">Welcome interview simulator!</h2>
     <h3>Choose the answers you think are the best. All answers are valued differently from 0 to 100 points. Keep in mind that it's impossible to simulate interviewers mood and <a class="secretLogin" href="login.php">preferences</a>.</h3>
     <h3>After the quiz you can see the best answers and tips on how to improve your answers.</h3>
   </div>
-  <div class="mainContainer col-xs-12 col-sm-10 col-sm-offset-1 clearfix">
+  <div class="mainContainer designerBackground col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 clearfix">
     <?php
     include 'connection.php';
 
@@ -35,7 +35,7 @@
       while ($row = mysqli_fetch_array($result))
       {
         $question = $row['id'];
-        echo '<h1 class="col-xs-12 noselect questions" id=question' . $row['id'] . ' hidden>' . $row['question'] . '</h1>';
+        echo '<h1 class="col-xs-12 designerGreen noselect questions" id=question' . $row['id'] . ' hidden>' . $row['question'] . '</h1>';
         $sqlA = "SELECT * FROM answers WHERE `question_id`=" . $question . " ORDER BY RAND()";
         $resultA = mysqli_query($db, $sqlA);
         while ($rowA = mysqli_fetch_array($resultA))
@@ -49,15 +49,15 @@
     {
       echo "Error: " . mysqli_error($db);
     } ?>
-    <button class="clearfix next blueButton row col-xs-9 col-xs-offset-1" disabled id="next" hidden>Next</button>
-    <button class="clearfix activeAnswers blueButton row col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6" id="start">Start with the simulator</button>
+    <button class="clearfix next blueButton row col-xs-12 col-sm-offset-1 col-sm-10" disabled id="next" hidden>Next</button>
+    <button class="clearfix blueButton row col-xs-12 col-sm-10 col-sm-offset-1" id="start">Start with the simulator</button>
   </div>
 
-  <div class="finalContainer" style="display:none;">
+  <div class="finalContainer designerBackground col-xs-12 col-sm-8 col-sm-offset-2" style="display:none;">
     <h2>You have scored:</h2>
   </div>
   <div class="finalText col-xs-12" style="display:none; text-align:center; font-size:16px; margin-bottom:20px;"><p><b>Next you can see the answers along with some additional questions that were not covered in this quiz.</b></p></div>
-  <button class="clearfix activeAnswer blueButton row col-xs-12 col-sm-6 col-sm-offset-3" id="onward" hidden>See the answers!</button>
+  <button class="clearfix blueButton row col-xs-12 col-sm-6 col-sm-offset-3" id="onward" hidden>See the answers!</button>
   <script src="js/bootstrap.min.js"></script>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

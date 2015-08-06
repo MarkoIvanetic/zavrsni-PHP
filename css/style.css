@@ -1,8 +1,20 @@
 html {
   font-size: 16px;
   position: relative;
-}
+  background: url("../source/cubes.png");
+  background-repeat: repeat;
 
+}
+.designerBackground{
+  background-color: #675458;
+}
+.designerGreen{
+  background-color: #B2D6BC;
+  color: #675458;
+}
+#onward{
+  opacity: 1!important;
+}
 h1 {
   font-size: 2rem;
 }
@@ -18,7 +30,9 @@ h3 {
 a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
   cursor: pointer;
 }
-
+.resultHtml button{
+  opacity: 1;
+}
 .noselect {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -29,6 +43,7 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 }
 .tipIndicator{
   margin-top: 20px;
+  color: #B2D6BC;
 }
 .noselect:hover {
   cursor: default;
@@ -81,13 +96,18 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 .item-number * {
   padding-left: 160px;
 }
-
+#redirect{
+  margin-top: 50px;
+}
 .introduction {
   min-height: 400px;
   line-height: 1.5!important;
   margin-top: 40px;
   z-index: 10;
   text-align: center;
+}
+.resultHtml .introduction{
+  min-height: 300px;
 }
 
 .afterStuff {
@@ -161,13 +181,14 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 .answerButton {
   width: 100%;
   color: white;
-  background-color: rgba(30, 136, 229, 0.3);
+  background-color: #FF595B;
+  opacity: 0.3;
   border: none;
   padding: 5px 0px;
 }
 
 .activeAnswers {
-  background-color: rgba(30, 136, 229, 1)!important;
+  opacity: 1!important;
 }
 /*Next button*/
 .next {
@@ -176,7 +197,7 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 }
 
 .bestAnswerButton {
-  background-color: #70BE3C;
+  background-color: #B2D6BC;
 }
 
 .blueButton {
@@ -184,21 +205,28 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
   padding: 5px;
   background: none;
   color: white;
-  background-color: rgba(14,131,205,0.3);
+  background-color: #FF595B;
+  opacity: 0.3;
   letter-spacing: 1px;
   outline: none;
   transition: all 0.3s;
   -webkit-transition: all 0.3s;
 }
-
+.blueButtonHover{
+  opacity: 1;
+}
 .blueButtonHover:hover {
-  background: #FFFFFF!important;
-  color: #0E83CD;
-  border: 2px solid #0E83CD;
+  background: #FF595B!important;
+  opacity: 1;
+  color: white;
+  text-shadow: none;
+  box-shadow: 1px 2px 8px #111
 }
 
 #start {
   height: 56px;
+  margin-bottom: 20px;
+  opacity: 1!important;
 }
 
 .bestAnswer {
@@ -210,12 +238,12 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 }
 
 .secretLogin{
-  color: black;
+  color: white;
 }
 .secretLogin:hover{
   cursor: default;
   text-decoration: none;
-  color: black;
+  color: white;
 }
 /********************FinalContainer***********************************************/
 .finalContainer {
@@ -270,10 +298,6 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 @media (max-width: 680px) {
   html {
     font-size: 12px;
-  }
-
-  .mainContainer {
-    width: 100%;
   }
 
   .introduction {

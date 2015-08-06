@@ -2,7 +2,7 @@
 <?php
 $GLOBALS['counter'] =1;
 ?>
-<html lang="en">
+<html lang="en" class="resultHtml">
 <head>
     <script>
         document.write('<base href="' + document.location.pathname + '" />')
@@ -20,7 +20,7 @@ $GLOBALS['counter'] =1;
 
 <body>
     <div class="loadingCover"></div>
-    <div class="mainContainer col-xs-12 col-sm-10 col-sm-offset-1 clearfix">
+    <div class="mainContainer designerBackground col-xs-12 col-sm-10 col-sm-offset-1 clearfix">
          <?php
 include 'connection.php';
 
@@ -31,7 +31,7 @@ if (mysqli_ping($db))
   while ($row = mysqli_fetch_array($result))
     {
     $question = $row['id'];
-    echo '<h1 class="col-xs-12 noselect questions" id=question' . $row['id'] . ' hidden>' . $row['question'] . '</h1>';
+    echo '<h1 class="col-xs-12 noselect designerGreen questions" id=question' . $row['id'] . ' hidden>' . $row['question'] . '</h1>';
     $sqlA = "SELECT * FROM answers WHERE `question_id`=" . $question . " ORDER BY `id`";
     $resultA = mysqli_query($db, $sqlA);
     while ($rowA = mysqli_fetch_array($resultA))
@@ -54,13 +54,13 @@ if (mysqli_ping($db))
   }
 
 ?>
-        <button class="clearfix next blueButton row col-xs-9 col-xs-offset-1" id="next">Next</button>
+        <button class="clearfix next blueButton row col-xs-12 col-sm-offset-1 col-sm-10" id="next">Next</button>
     </div>
     <div class="introTips col-xs-12" hidden>
-        <div class="introduction row col-xs-8 col-md-8 col-md-offest-2 col-xs-offset-2">
-            <h2>Additional questions</h2>
+        <div class="introduction row designerBackground col-xs-8 col-md-8 col-md-offest-2 col-xs-offset-2">
+            <h2 class="designerGreen">Additional questions</h2>
             <h3>Next you will find some additional questions that you may come across. Be sure to prepare for the as well!</h3>
-            <button class="clearfix next blueButton row col-xs-9 col-xs-offset-1" id="redirect">To additional questions</button>
+            <button class="clearfix next blueButton row col-xs-12 col-sm-offset-1 col-sm-10" id="redirect">To additional questions</button>
         </div>
     </div>
 

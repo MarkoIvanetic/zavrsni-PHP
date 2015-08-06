@@ -58,16 +58,15 @@ $(document).ready(function() {
             // After pressing "Next", .activeAnswer will be removed from buttons
             $('.mainContainer button').removeClass('activeAnswers');
             $('.answers button').removeClass("bestAnswerButton");
-            setHeight();
+
             //Ako ima jos pitanja
             if ($('#question' + i)[0]) {
+                $('#next').removeClass("blueButtonHover");
                 $('#next').attr('disabled', true);
                 $('.answers').hide();
                 $('.questions').hide();
                 $('#question' + i).show();
                 $('.answerIndicator' + i).show();
-                setHeight();
-
 
                 //AFTER ANSWERING ALL QUESTIONS
             } else {
@@ -112,7 +111,7 @@ $(document).ready(function() {
                     if (counter == finalScore) {
                         $('.finalContainer').append('<h3 class="col-xs-12" style="text-align:center;">' + scoreMessage + '</h3>');
                         $('.finalContainer p').text(scoreMessage).animate("opacity", "1");
-                        $('#onward').show().css("background-color", "rgba(14,131,205,1)");
+                        $('#onward').show().css("background-color", "#FF595B");
                         $('.finalText').show();
                     }
                 }, 50);}
@@ -132,9 +131,8 @@ $(document).ready(function() {
 
     $(".answers p").css("min-height", maxHeight);
     $(".answers p").css("min-height", maxHeight);
-    $('#next').css('background-color', 'rgba(14,131,205,1)');
+    $('#next').css('background-color', '#FF595B');
     // $('#next').removeAttr('disabled');
-    $('#next').addClass('blueButtonHover');
     $('#next').unbind();
     $('#next').click(function() {
         window.onbeforeunload = null;
@@ -158,7 +156,7 @@ $(document).ready(function() {
     var activeAnswer = function() {
         $(this).addClass('activeAnswers');
         $('button').not(this).removeClass('activeAnswers');
-        $('#next').css('background-color', 'rgba(14,131,205,1)');
+        $('#next').css('background-color', '#FF595B');
         $('#next').removeAttr('disabled');
         $('#next').addClass('blueButtonHover');
         console.log('Working active')
