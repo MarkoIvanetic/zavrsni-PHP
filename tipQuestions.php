@@ -46,9 +46,9 @@ $GLOBALS['counter'] =1;
     <button class="clearfix next blueButton row col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" id="next">Next question</button> 
   </div>
 
-  <div hidden id="afterStuff" class="afterStuff row col-xs-10 row col-xs-offset-1">
+  <div hidden id="afterStuff" class="afterStuff designerBackground row col-xs-10 row col-xs-offset-1">
    <section class="col-xs-12">
-    <h2 hidden>Good luck on your future interviews!</h2>
+    <h2 hidden class="designerGreen">Good luck on your future interviews!</h2>
     <h3>If you want to learn more, please visit <a href="http://www.about.com/careers/">About Careers</a></h3>
     <h3>or follow one of the links below:</h3></br>
     <div>
