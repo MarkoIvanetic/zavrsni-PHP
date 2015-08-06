@@ -34,7 +34,7 @@ $GLOBALS['counter'] =1;
         .'</h1>';
 
         echo '<div class="row">
-        <div style="display:none;" class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 answers" id=tip'.$row['id'].'><p>'.$row['tip'].'</p></div>
+        <div style="display:none; border-color:white;" class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 answers" id=tip'.$row['id'].'><p>'.$row['tip'].'</p></div>
         </div>';
       }
     }
@@ -46,7 +46,7 @@ $GLOBALS['counter'] =1;
     <button class="clearfix next blueButton row col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8" id="next">Next question</button> 
   </div>
 
-  <div hidden id="afterStuff" class="afterStuff designerBackground row col-xs-10 row col-xs-offset-1">
+  <div hidden id="afterStuff" class="afterStuff designerBackground row col-xs-12 col-sm-8 col-sm-offset-2 row">
    <section class="col-xs-12">
     <h2 hidden class="designerGreen">Good luck on your future interviews!</h2>
     <h3>If you want to learn more, please visit <a href="http://www.about.com/careers/">About Careers</a></h3>
@@ -60,7 +60,17 @@ $GLOBALS['counter'] =1;
       <a href="http://jobsearch.about.com/od/findajob/u/findajob.htm">Find a Job</a>
       <h3><strong>Or go to <a id="mainPage" href="index.php">Main page</a></strong></h3>
       <hr>
-      <h3 style="">This page was created by Marko Ivanetić</h3>
+
+     <footer class="col-xs-12">
+    <div class="col-xs-12 col-sm-6">
+     <img src="source/tvz.png" class=""/>
+</div>
+  <p class="col-xs-12 col-sm-6"><a href="http://www.tvz.hr/" target="blank">Tehničko veleučilište u Zagrebu</a>
+    <br/>Adresa: Vrbik 8
+    <br/>Tel: ++385 1 5595 320
+  </p>  
+</footer>
+
     </div>
   </section>
 </div>

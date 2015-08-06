@@ -155,6 +155,9 @@ $(document).ready(function() {
 
     var activeAnswer = function() {
         $(this).addClass('activeAnswers');
+        $('.answers').css("border","1px solid rgba(255,89,88,0.3)");
+        $(this).closest('.answers').css("border","1px solid rgba(255,89,88,1)");
+        $('button').not(this).removeClass('activeAnswers');
         $('button').not(this).removeClass('activeAnswers');
         $('#next').css('background-color', '#FF595B');
         $('#next').removeAttr('disabled');

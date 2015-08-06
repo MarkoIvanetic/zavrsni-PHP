@@ -54,7 +54,7 @@
   </div>
 
   <div class="finalContainer designerBackground col-xs-12 col-sm-8 col-sm-offset-2" style="display:none;">
-    <h2>You have scored:</h2>
+    <h2 class="designerGreen">You have scored:</h2>
   </div>
   <div class="finalText col-xs-12" style="display:none; text-align:center; font-size:16px; margin-bottom:20px;"><p><b>Next you can see the answers along with some additional questions that were not covered in this quiz.</b></p></div>
   <button class="clearfix blueButton row col-xs-12 col-sm-6 col-sm-offset-3" id="onward" hidden>See the answers!</button>

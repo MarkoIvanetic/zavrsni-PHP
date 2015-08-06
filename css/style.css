@@ -14,6 +14,8 @@ html {
 }
 #onward{
   opacity: 1!important;
+  height: 60px;
+  font-size: 1.8em;
 }
 h1 {
   font-size: 2rem;
@@ -22,16 +24,23 @@ h1 {
 h2 {
   font-size: 3rem;
 }
-
 h3 {
   font-size: 1.5rem;
 }
-
+hr{
+  margin-bottom: 0px;
+}
 a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
   cursor: pointer;
 }
 .resultHtml button{
   opacity: 1;
+}
+footer div{
+text-align: left;
+}
+footer p{
+text-align: right;
 }
 .noselect {
   -webkit-touch-callout: none;
@@ -98,6 +107,8 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 }
 #redirect{
   margin-top: 50px;
+    height: 60px;
+  font-size: 1.8em;
 }
 .introduction {
   min-height: 400px;
@@ -112,6 +123,7 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 
 .afterStuff {
   min-height: 400px;
+  min-width: 360px;
   z-index: 10;
   text-align: center;
 }
@@ -154,7 +166,7 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 
 .answers {
   margin-top: 20px;
-  border: 1px solid black;
+  border: 1px solid rgba(255,89,88,0.3);
   padding: 0px;
 }
 
@@ -199,7 +211,19 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 .bestAnswerButton {
   background-color: #B2D6BC;
 }
+footer p {
+    color: white;
+    text-align: right;
+  }
+  footer a{
+    color: white;
+    text-decoration: underline;
+  }
 
+footer{
+padding: 20px 0px;
+/*margin-top: 30px;*/
+}
 .blueButton {
   border: 2px solid transparent;
   padding: 5px;
@@ -292,6 +316,15 @@ a[href], input[type='submit'], input[type='image'], label[for], select, button, 
 
   .question {
     margin-left: 3%;
+  }
+}
+
+@media (max-width: 789px) {
+  footer div, footer p{
+    text-align: center;
+  }
+  footer p{
+    margin-top: 20px;
   }
 }
 
