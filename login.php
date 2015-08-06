@@ -51,7 +51,7 @@
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 		$username = mysqli_real_escape_string($db, $username);
-		if($username == "admin" && $password == "bstojakovicadmin")
+		if($username == "test" && $password == "test")
 		{
 				echo "Uspješno ste se prijavili!";
 				$_SESSION["id"] = "4047";
