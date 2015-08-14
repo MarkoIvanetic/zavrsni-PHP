@@ -52,7 +52,7 @@ else
     </div>
     <form method="post" action="adminPanel.php" class="col-sm-offset-1 col-sm-5 col-md-offset-2 col-md-4 centered">
       <h2>Delete questions</h2>
-<select name="questionSelect">
+<select name="questionSelect" style='color:black;'>
 <?php
 include 'connection.php';
 

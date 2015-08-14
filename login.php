@@ -11,7 +11,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<div class="col-md-3 login-inputs">
+	<div class="col-md-3 login-inputs" style='color:black;'>
 		<form class="form-horizontal" action="login.php" method="post">
 			<!-- Form Name -->
 
