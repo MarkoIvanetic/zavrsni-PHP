@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // i counts the questions, it's not 0 because first question is preloaded
-    var i = 12;
+    var i = 1;
     var questionStep = 1;
 
     $('#next').show();
