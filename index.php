@@ -20,8 +20,8 @@
 <body>
   <div class="loadingCover"></div>
   <div class="introduction designerBackground row col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-    <h2 CLASS="designerGreen">Welcome interview simulator!</h2>
-    <h3>Choose the answers you think are the best. All answers are valued differently from 0 to 100 points. Keep in mind that it's impossible to simulate interviewers mood and <a class="secretLogin" href="login.php">preferences</a>.</h3>
+    <h2 CLASS="designerGreen">Welcome to interview simulator!</h2>
+    <h3>Choose the answers you think are the best. All answers are valued differently from 0 to 100 points. Keep in mind that it's impossible to simulate interviewer's mood and <a class="secretLogin" href="login.php">preferences</a>.</h3>
     <h3>After the quiz you can see the best answers and tips on how to improve your answers.</h3>
   </div>
   <div class="mainContainer designerBackground col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 clearfix">
