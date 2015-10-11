@@ -1,3 +1,3 @@
 # zavrsni-rad
 Job interview simulator
-Demo: http://interviewsimulator.eu.pn/
+Demo: http://interviewsimulator.me/
