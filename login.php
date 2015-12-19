@@ -13,7 +13,6 @@
 <body>
 	<div class="col-md-3 login-inputs" style='color:black;'>
 		<form class="form-horizontal" action="login.php" method="post">
-			<!-- Form Name -->
 
 			<!-- Text input-->
 			<div class="control-group">
