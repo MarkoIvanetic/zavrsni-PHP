@@ -20,6 +20,26 @@ $(document).ready(function() {
         });
         $(".answers p").css("min-height", maxHeight);
     };
+    document.onkeypress = function (e) {
+        e = e || window.event;
+        console.log(event.keyCode);
+        if (true) {
+            switch (event.keyCode){
+                case 49:
+                $('.answers:visible:eq(0) button').click()
+                break;
+                case 50:
+                $('.answers:visible:eq(1) button').click()
+                break;
+                case 51:
+                $('.answers:visible:eq(2) button').click()
+                break;
+                case 13:
+                $('#next button').click();
+                break;
+            }
+        }
+    };
     //In case first stage has been passed
     var finalScore;
     $('#mainPage').click(function() {
@@ -163,6 +183,7 @@ $(document).ready(function() {
         $('#next').removeAttr('disabled');
         $('#next').addClass('blueButtonHover');
         console.log('Working active')
+        $('#next').focus();
     }; //end activeAnswer function   
 
     var sumArray = function(array){
